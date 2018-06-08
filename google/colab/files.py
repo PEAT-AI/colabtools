@@ -157,7 +157,7 @@ def download(filename):
   output.eval_js(
       """
       (async function() {
-        const response = await fetch('https://localhost:%(port)d%(path)s');
+        const response = await fetch('https://localhost:%(port)d/%(path)s');
         if (!response.ok) {
           throw new Error('Failed to download: ' + response.statusText);
         }
@@ -172,6 +172,6 @@ def download(filename):
       })();
   """ % {
       'port': port,
-      'path': os.path.abspath(filename),
+      'path': filename,
       'name': os.path.basename(filename),
   })
